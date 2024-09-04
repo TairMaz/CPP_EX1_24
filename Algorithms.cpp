@@ -57,10 +57,12 @@ namespace ariel{
             size_t curr = q.front();
             q.pop();
             for (size_t i = 0; i < n; ++i) {
-                if (g.Matrix[curr][i] != 0 && distance[i] == -1) {
-                    distance[i] = distance[curr] + 1;
-                    parent[i] = curr; // Update parent
-                    q.push(i);
+                if (g.Matrix[curr][i] != 0 ) {
+                    if(distance[i] == -1 || distance[i] > distance[curr] + 1){
+                        distance[i] = distance[curr] + 1;
+                        parent[i] = curr; // Update parent
+                        q.push(i);
+                    }
                 }
             }
         }
@@ -236,8 +238,7 @@ namespace ariel{
         // Check for negative-weight cycles
         for (size_t u = 0; u < n; ++u) {
             for (size_t v = 0; v < n; ++v) {
-                if (matrix[u][v] != 0 && dist[u] != numeric_limits<long long>::max() &&
-                    dist[u] + matrix[u][v] < dist[v]) {
+                if (matrix[u][v] != 0  && dist[u] + matrix[u][v] < 0) {
                     // Negative cycle found
                     vector<int> cycle;
                     int x = static_cast<int>(v);

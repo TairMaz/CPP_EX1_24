@@ -72,6 +72,7 @@ int main()
         {0, 0, 0, -4, 0},
         {0, 1, 0, 0, -5},
         {0, 2, 0, 0, 0}};
+
     g.loadGraph(graph4); // Load the graph to the object.
 
     g.printGraph();                                    // Should print: "Graph with 5 vertices and 6 edges."
